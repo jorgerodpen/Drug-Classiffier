@@ -6,7 +6,7 @@ We obtained the data from the UCI Machine Learning Repository [here](https://arc
 The data is used in _E. Fehrman, A. K. Muhammad, E. M. Mirkes, V. Egan and A. N. Gorban, "The Five Factor Model of personality and evaluation of drug consumption risk.," arXiv [Web Link](https://arxiv.org/pdf/1506.06297v2.pdf), 2015_. However, the original data comes from a research study from _Fehrman E, Egan V. Drug consumption, collected online March 2011 to March
 2012, English-speaking countries. ICPSR36536-v1. Ann Arbor, MI:
 Inter-university Consortium for Political and Social Research [distributor],
-2016-09-09. Deposited by Mirkes E. http://doi.org/10.3886/ICPSR36536.v1_
+2016-09-09. Deposited by Mirkes E. http://doi.org/10.3886/ICPSR36536.v1_.
 
 ## Data
 The dataset contains records of 1885 with 12 independent variables:
@@ -28,5 +28,21 @@ The dataset contains records of 1885 with 12 independent variables:
 - **Inpulsivity**: Score obtained in the BIS-11 test.
 - **Sensation seeking**: Score obtained in the ImpSS test.
 
-# Data cleaning
-The original dataset contained quantified categorical variables, which difficulted its readability. To simplify this, we cleaned the dataset to assign each numerical value to their corresponding category. We had the same issue with the scores of the psychological tests. To generate predictions after our model is trained, it is easier to input the score of the test, so we assigned each value to its corresponding test score. 
+The target variables are 18 drugs: alcohol, amphetamines, amyl nitrite, benzodiazepine, caffeine, cannabis, chocolate, cocaine, crack, ecstasy, heroin, ketamine, legal highs, lysergic acid diethylamide, methadone, magic mushrooms, nicotine, fictitious drug Semeron, volatile substances. 
+
+The fictitious drug Semeron was introduced to identify over-claimers. Each drug contains one value that represents the frequency of used of the drug:
+- **CL0**: Never used
+- **CL1**: Used over a decade ago
+- **CL2**: Used in last decade
+- **CL3**: Used in last year
+- **CL4**: Used in last month
+- **CL5**: Used in last week
+- **CL6**: Used in last day
+
+This sample is biased to a higher proportion of drug users and is not really representative of the general population. 
+
+## Data cleaning
+The original dataset contained quantified categorical variables, which made difficult its readability. To simplify this, we cleaned the dataset to assign each numerical value to their corresponding category. We had the same issue with the scores of the psychological tests. To generate predictions after our model is trained, it is easier to input the score of the test, so we assigned each value to its corresponding test score. 
+
+## Data preparation
+We generated dummy variables for every categorical values. 

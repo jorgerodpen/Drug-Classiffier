@@ -627,7 +627,7 @@ for i = 1:nrows
     elseif dataset{i,12}>1.9
         dataset{i,12} = 9;
     else
-        dataset{i,12}=NaN
+        dataset{i,12} = NaN;
     end
     
     % Sensation seeking
@@ -635,46 +635,29 @@ for i = 1:nrows
         dataset{i,13} = 0;
     elseif dataset{i,13}>-2.1 && dataset{i,13}<-1.5
         dataset{i,13} = 1;
-    elseif dataset{i,13}>-1.5 && dataset{i,13}<-1.2
+    elseif dataset{i,13}>-1.5 && dataset{i,13}<-1.1
         dataset{i,13} = 2;
-    elseif dataset{i,13}>-0.7 && dataset{i,13}<-0.2
+    elseif dataset{i,13}>-1.1 && dataset{i,13}<-0.8
         dataset{i,13} = 3;
-    elseif dataset{i,13}>-0.2 && dataset{i,13}<0.2
+    elseif dataset{i,13}>-0.8 && dataset{i,13}<-0.5
         dataset{i,13} = 4;
-    elseif dataset{i,13}>0.2 && dataset{i,13}<0.6
+    elseif dataset{i,13}>-0.5 && dataset{i,13}<-0.2
         dataset{i,13} = 5;
-    elseif dataset{i,13}>0.6 && dataset{i,13}<0.9
+    elseif dataset{i,13}>-0.2 && dataset{i,13}<0.1
         dataset{i,13} = 6;
-    elseif dataset{i,13}>0.9 && dataset{i,13}<1.3
+    elseif dataset{i,13}>0.1 && dataset{i,13}<0.5
         dataset{i,13} = 7;
-    elseif dataset{i,13}>1.3 && dataset{i,13}<1.9
+    elseif dataset{i,13}>0.5 && dataset{i,13}<0.8
         dataset{i,13} = 8;
-    elseif dataset{i,13}>1.9
+    elseif dataset{i,13}>0.8 && dataset{i,13}<1.3
         dataset{i,13} = 9;
+    elseif dataset{i,13}>1.3
+        dataset{i,13} = 10;
     else
-        dataset{i,13}=NaN
-    end
-end
-
-% Mapping non-numerical columns to numbers
-disp("Cleaning drug use...")
-for i = 14:ncols
-    for j = 1:nrows
-        if dataset{j,i}=="CL0"
-            dataset{j,i} = {0};
-        elseif dataset{j,i}=="CL1"
-            dataset{j,i} = {1};
-        elseif dataset{j,i}=="CL2"
-            dataset{j,i} = {2};
-        elseif dataset{j,i}=="CL3"
-            dataset{j,i} = {3};
-        elseif dataset{j,i}=="CL4"
-            dataset{j,i} = {4};
-        elseif dataset{j,i}=="CL5"
-            dataset{j,i} = {5};
-        else
-            dataset{j,i} = {6};
-        end
+        dataset{i,13} = NaN;
     end
 end
 disp("Data cleaned")
+disp("Creating cleaned_drug_consumption.csv...")
+writetable(dataset,"cleaned_drug_consumption.csv")
+disp("cleaned_drug_consumption.csv created")

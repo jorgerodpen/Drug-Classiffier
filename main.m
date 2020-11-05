@@ -627,7 +627,7 @@ for i = 1:nrows
     elseif dataset{i,12}>1.9
         dataset{i,12} = 9;
     else
-        dataset{i,12}=NaN
+        dataset{i,12} = NaN;
     end
     
     % Sensation seeking
@@ -654,31 +654,10 @@ for i = 1:nrows
     elseif dataset{i,13}>1.3
         dataset{i,13} = 10;
     else
-        dataset{i,13}=NaN
-    end
-end
-
-% Mapping non-numerical columns to numbers
-disp("Cleaning drug use...")
-for i = 14:ncols
-    for j = 1:nrows
-        if dataset{j,i}=="CL0"
-            dataset{j,i} = {0};
-        elseif dataset{j,i}=="CL1"
-            dataset{j,i} = {1};
-        elseif dataset{j,i}=="CL2"
-            dataset{j,i} = {2};
-        elseif dataset{j,i}=="CL3"
-            dataset{j,i} = {3};
-        elseif dataset{j,i}=="CL4"
-            dataset{j,i} = {4};
-        elseif dataset{j,i}=="CL5"
-            dataset{j,i} = {5};
-        elseif dataset{j,i}=="CL6"
-            dataset{j,i} = {6};
-        else
-            dataset{j,i} = NaN;
-        end
+        dataset{i,13} = NaN;
     end
 end
 disp("Data cleaned")
+disp("Creating cleaned_drug_consumption.csv...")
+writetable(dataset,"cleaned_drug_consumption.csv")
+disp("cleaned_drug_consumption.csv created")

@@ -6,27 +6,27 @@ Country
 Ethnicity
 Neuroticism
 Extraversion
-Openness to experience
+Openness
 Agreeableness
 Conscientiousness
 Impulsiveness
 Sensation seeking
-Alcohol consumption
-Amphetamines consumption
-Amyl nitrite consumption
-Benzodiazepine consumption
-Caffeine consumption
-Cannabis consumption
-Chocolate consumption
-Cocaine consumption
-Crack consumption
-Ecstasy consumption
-Heroin consumption
-Ketamine consumption
-Legal highs consumption
-Lysergic acid diethylamide consumption
-Methadone consumption
-Magic mushrooms consumption
-Nicotine consumption
-Fictitious drug Semeron consumption
-Volatile substance abuse consumption
+Alcohol
+Amphetamines 
+Amyl nitrite
+Benzodiazepine
+Caffeine
+Cannabis
+Chocolate
+Cocaine
+Crack
+Ecstasy
+Heroin
+Ketamine
+Legal highs
+Lysergic acid diethylamide
+Methadone
+Magic mushrooms
+Nicotine
+Fictitious drug Semeron
+Volatile substance abuse
