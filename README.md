@@ -1,6 +1,14 @@
 # Drug consumption classiffier 
 
 ## Data source
+We obtained the data from the UCI Machine Learning Repository [here](https://archive.ics.uci.edu/ml/datasets/Drug+consumption+%28quantified%29). The original dataset was created for a psychological study whose purpose was 
+
+The data is used in _E. Fehrman, A. K. Muhammad, E. M. Mirkes, V. Egan and A. N. Gorban, "The Five Factor Model of personality and evaluation of drug consumption risk.," arXiv [Web Link](https://arxiv.org/pdf/1506.06297v2.pdf), 2015_. However, the original data comes from a research study from _Fehrman E, Egan V. Drug consumption, collected online March 2011 to March
+2012, English-speaking countries. ICPSR36536-v1. Ann Arbor, MI:
+Inter-university Consortium for Political and Social Research [distributor],
+2016-09-09. Deposited by Mirkes E. http://doi.org/10.3886/ICPSR36536.v1_
+
+## Data
 The dataset contains records of 1885 with 12 independent variables:
 - **ID**: ID number of the participant. 
 - **Age**: Age group of the participant:
