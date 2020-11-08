@@ -5,9 +5,9 @@ dataset = readtable("cleaned_drug_consumption.csv","VariableNamingRule","preserv
 
 %% Colormap
 colormap = customcolormap([1,0.5,0],...
-    {'#004f80','#ffffff','#710e20'},128);
+    {'#004f84','#ffffff','#710e20'},128);
 colormap2 = customcolormap([1,0],...
-    {'#004f80','#ffffff'},128);
+    {'#004f84','#ffffff'},128);
 %% Total correlation
 c=corr(dataset{:,[2:55,57]});
 labels=dataset.Properties.VariableNames;
@@ -71,7 +71,7 @@ used = sum(dataset{:,[39:55,57]},2);
 timesused = unique(used);
 counts  = histc(used, timesused);
 figure(6)
-bar(timesused, counts, 'FaceColor','#004f80')
+bar(timesused, counts, 'FaceColor','#004f84')
 xlabel('Total number of drugs consumed')
 ylabel('Number of users')
 
@@ -81,7 +81,7 @@ used = sum(dataset{:,idxillegal},2);
 timesused = unique(used);
 counts  = histc(used, timesused);
 figure(7)
-bar(timesused, counts, 'FaceColor','#004f80')
+bar(timesused, counts, 'FaceColor','#004f84')
 xlabel('Total number of drugs consumed')
 ylabel('Number of users')
 
@@ -91,7 +91,7 @@ labels = categorical(labels([39:55,57]));
 total = sum(dataset{:,[39:55,57]})/1885*100;
 figure(8)
 ax = axes;
-bar(labels, total, 'FaceColor','#004f80')
+bar(labels, total, 'FaceColor','#004f84')
 ytickformat(ax, '%g%%');
 
 %% Difference in mean score of each drug (with sample)
@@ -139,52 +139,15 @@ h=heatmap(labelsp, labelsd, meanval, 'Colormap',colormap);
 h.ColorLimits=[-40,40];
 
 %% Histograms of scores
-% Gaussian
-x= linspace(12,60,500);
-gauss = @(mean, std) 1/(sqrt(2*pi*std^2))*exp(-(x-mean).^2/(2*std^2));
-
-% Plots
-h(1) = subplot(3,2,1); histogram(dataset{:,32},'FaceColor','#004f80','Normalization','probability')
+subplot(3,2,1), histogram(dataset{:,32},'FaceColor','#004f84')
 hold on
-plot(x, gauss(28.83, 7.36),'LineWidth',2,'Color','#990d21')
+plo
 title('Neuroticism')
-grid
-xlim([12,60])
-ylim([0,0.08])
-
-h(2) = subplot(3,2,2); histogram(dataset{:,33},'FaceColor','#004f80','Normalization','probability')
-hold on
-plot(x, gauss(31.29, 6.46),'LineWidth',2,'Color','#990d21')
+subplot(3,2,2), histogram(dataset{:,33},'FaceColor','#004f84')
 title('Extraversion')
-grid
-xlim([12,60])
-ylim([0,0.08])
-
-h(3) = subplot(3,2,3); histogram(dataset{:,34},'FaceColor','#004f80','Normalization','probability')
-hold on
-plot(x, gauss(43.29,6.12),'LineWidth',2,'Color','#990d21')
+subplot(3,2,3), histogram(dataset{:,34},'FaceColor','#004f84')
 title('Openness')
-grid
-xlim([12,60])
-ylim([0,0.08])
-
-h(4) = subplot(3,2,4); histogram(dataset{:,35},'FaceColor','#004f80','Normalization','probability')
-hold on
-plot(x, gauss(44.41,5.42),'LineWidth',2,'Color','#990d21')
+subplot(3,2,4), histogram(dataset{:,35},'FaceColor','#004f84')
 title('Agreeableness')
-grid
-xlim([12,60])
-ylim([0,0.08])
-
-h(5) = subplot(3,2,5); histogram(dataset{:,36},'FaceColor','#004f80',...
-    'Normalization','probability','LineWidth',0.6)
-hold on
-plot(x, gauss(45.26,6.3),'LineWidth',2,'Color','#990d21')
+subplot(3,2,5), histogram(dataset{:,36},'FaceColor','#004f84')
 title('Conscientiousness')
-grid
-xlim([12,60])
-ylim([0,0.08])
-
-pos = get(h,'Position');
-new = mean(cellfun(@(v)v(1),pos(1:2)));
-set(h(5),'Position',[new,pos{end}(2:end)])

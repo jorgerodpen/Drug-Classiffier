@@ -41,8 +41,5 @@ The fictitious drug Semeron was introduced to identify over-claimers. Each drug 
 
 This sample is biased to a higher proportion of drug users and is not really representative of the general population. 
 
-## Data cleaning
-The original dataset contained quantified categorical variables, which made difficult its readability. To simplify this, we cleaned the dataset to assign each numerical value to their corresponding category. We had the same issue with the scores of the psychological tests. To generate predictions after our model is trained, it is easier to input the score of the test, so we assigned each value to its corresponding test score. 
-
 ## Data preparation
-We generated dummy variables for every categorical values. 
+The  [original dataset](https://archive.ics.uci.edu/ml/datasets/Drug+consumption+%28quantified%29) contained quantified categorical variables, which made difficult its readability. The variables were quantified using different methods such as polychoric correlation or CatPCA. We opted for a simpler approach using dummy variables cleaning the original data. We had the same issue with the scores of the psychological tests. To generate predictions once our model is trained, it is easier to input the score of the test, so we assigned each value to its corresponding test score. 
