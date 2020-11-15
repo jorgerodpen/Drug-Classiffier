@@ -9,16 +9,16 @@ colormap = customcolormap([1,0.5,0],...
 colormap2 = customcolormap([1,0],...
     {'#004f80','#ffffff'},128);
 %% Total correlation
-c=corr(dataset{:,[2:55,57]});
+c=corr(dataset{:,[2:51,53]});
 labels=dataset.Properties.VariableNames;
-labels=labels([2:55,57]);
+labels=labels([2:51,53]);
 figure(1)
 h=heatmap(labels,labels,c,'Colormap',colormap);
 h.ColorLimits=[-1,1];
 
 %% Personal data and drug consumption (age and studies not grouped)
 x = dataset(:,2:31);
-y = dataset(:,[39:55,57]);
+y = dataset(:,[35:51,53]);
 c=corr(x{:,:},y{:,:});
 labelsx=x.Properties.VariableNames;
 labelsy=y.Properties.VariableNames;
@@ -27,20 +27,20 @@ h=heatmap(labelsy,labelsx,c,'Colormap',colormap);
 h.ColorLimits=[-1,1];
 
 %% Personal data and drug consumption (age and studies grouped)
-age = dataset(:,3:8);
-for i = 2:length(3:8)
+age = dataset(:,3:7);
+for i = 2:length(3:7)
     start = age{:,i};
     age{:,i} = start*i;
 end
 age = array2table(sum(age{:,:},2),'VariableNames',{'Age'});
-studies = dataset(:,9:17);
-for i = 2:length(9:17)
+studies = dataset(:,8:15);
+for i = 2:length(8:15)
     start = studies{:,i};
     studies{:,i} = start*i;
 end
 studies = array2table(sum(studies{:,:},2),'VariableNames',{'Studies'});
-x = [dataset(:,2), age, studies, dataset(:,18:31)];
-y = dataset(:,[39:55,57]);
+x = [dataset(:,2), age, studies, dataset(:,15:27)];
+y = dataset(:,[35:51,53]);
 c=corr(x{:,:},y{:,:});
 labelsx=x.Properties.VariableNames;
 labelsy=y.Properties.VariableNames;
@@ -49,8 +49,8 @@ h=heatmap(labelsy,labelsx,c,'Colormap',colormap);
 h.ColorLimits=[-1,1];
 
 %% Psychological tests score and drug consumption
-x = dataset(:,32:38);
-y = dataset(:,[39:55,57]);
+x = dataset(:,28:34);
+y = dataset(:,[35:51,53]);
 c=corr(x{:,:},y{:,:});
 labelsx=x.Properties.VariableNames;
 labelsy=y.Properties.VariableNames;
@@ -59,15 +59,15 @@ h=heatmap(labelsy,labelsx,c,'Colormap',colormap);
 h.ColorLimits=[-1,1];
 
 %% Drug consumption relation
-c=corr(dataset{:,[39:55,57]});
+c=corr(dataset{:,[35:51,53]});
 labels=dataset.Properties.VariableNames;
-labels=labels([39:55,57]);
+labels=labels([35:51,53]);
 figure(5)
 h=heatmap(labels,labels,c,'Colormap',colormap);
 h.ColorLimits=[-1,1];
 
 %% Number of drugs consumed (all drugs)
-used = sum(dataset{:,[39:55,57]},2);
+used = sum(dataset{:,[35:51,53]},2);
 timesused = unique(used);
 counts  = histc(used, timesused);
 figure(6)
@@ -76,7 +76,7 @@ xlabel('Total number of drugs consumed')
 ylabel('Number of users')
 
 %% Number of drugs consumed (illegal drugs)
-idxillegal = [40:42, 44, 46:55, 57];
+idxillegal = [36:38,40,42:51,53];
 used = sum(dataset{:,idxillegal},2);
 timesused = unique(used);
 counts  = histc(used, timesused);
@@ -87,8 +87,8 @@ ylabel('Number of users')
 
 %% Percentage of ussage of each drug
 labels = dataset.Properties.VariableNames;
-labels = categorical(labels([39:55,57]));
-total = sum(dataset{:,[39:55,57]})/1885*100;
+labels = categorical(labels([35:51,53]));
+total = sum(dataset{:,[35:51,53]})/1885*100;
 figure(8)
 ax = axes;
 bar(labels, total, 'FaceColor','#004f80')
@@ -98,16 +98,16 @@ ytickformat(ax, '%g%%');
 labels = dataset.Properties.VariableNames;
 
 %Five Factor
-colsd = [39:55,57];
-colsp = 32:36;
+colsd = [35:51,53];
+colsp = 28:32;
 labelsd = categorical(labels(colsd));
 labelsp = categorical(labels(colsp));
 meanval = zeros(length(labelsd), length(labelsp));
-meanN = mean(dataset{:,32});
-meanE = mean(dataset{:,33});
-meanO = mean(dataset{:,34});
-meanA = mean(dataset{:,35});
-meanC = mean(dataset{:,36});
+meanN = mean(dataset{:,28});
+meanE = mean(dataset{:,29});
+meanO = mean(dataset{:,30});
+meanA = mean(dataset{:,31});
+meanC = mean(dataset{:,32});
 means = {meanN, meanE, meanO, meanA, meanC};
 for i = 1:length(labelsd)
     for j = 1:length(labelsp)
@@ -118,11 +118,11 @@ for i = 1:length(labelsd)
 end
 figure(9)
 h=heatmap(labelsp, labelsd, meanval,'Colormap',colormap);
-h.ColorLimits=[-10,10];
+h.ColorLimits=[-12,12];
 %% Difference in mean score of each drug (with pop)
 labels = dataset.Properties.VariableNames;
-colsd = [39:55,57];
-colsp = 32:36;
+colsd = [35:51,53];
+colsp = 28:32;
 labelsd = categorical(labels(colsd));
 labelsp = categorical(labels(colsp));
 meanval = zeros(length(labelsd), length(labelsp));
@@ -138,13 +138,37 @@ figure(10)
 h=heatmap(labelsp, labelsd, meanval, 'Colormap',colormap);
 h.ColorLimits=[-40,40];
 
+%% Difference in mean score of each drug (with non-users)
+labels = dataset.Properties.VariableNames;
+
+%Five Factor
+colsd = [35:51,53];
+colsp = 28:32;
+labelsd = categorical(labels(colsd));
+labelsp = categorical(labels(colsp));
+meanval = zeros(length(labelsd), length(labelsp));
+for i = 1:length(labelsd)
+    for j = 1:length(labelsp)
+        consumer = dataset{:,colsd(i)}==1;
+        nonconsumer = dataset{:,colsd(i)}~=1;
+        test = dataset{:,colsp(j)};
+        meanconsumer = mean(test(consumer));
+        meannonconsumer = mean(test(nonconsumer));
+        meanval(i,j) = (meanconsumer-meannonconsumer)/meannonconsumer*100;
+    end
+end
+figure(11)
+h=heatmap(labelsp, labelsd, meanval,'Colormap',colormap);
+h.ColorLimits=[-12,12];
+
 %% Histograms of scores
 % Gaussian
 x= linspace(12,60,500);
 gauss = @(mean, std) 1/(sqrt(2*pi*std^2))*exp(-(x-mean).^2/(2*std^2));
 
 % Plots
-h(1) = subplot(3,2,1); histogram(dataset{:,32},'FaceColor','#004f80','Normalization','probability')
+figure(12)
+h(1) = subplot(3,2,1); histogram(dataset{:,28},'FaceColor','#004f80','Normalization','probability')
 hold on
 plot(x, gauss(28.83, 7.36),'LineWidth',2,'Color','#990d21')
 title('Neuroticism')
@@ -152,7 +176,7 @@ grid
 xlim([12,60])
 ylim([0,0.08])
 
-h(2) = subplot(3,2,2); histogram(dataset{:,33},'FaceColor','#004f80','Normalization','probability')
+h(2) = subplot(3,2,2); histogram(dataset{:,29},'FaceColor','#004f80','Normalization','probability')
 hold on
 plot(x, gauss(31.29, 6.46),'LineWidth',2,'Color','#990d21')
 title('Extraversion')
@@ -160,7 +184,7 @@ grid
 xlim([12,60])
 ylim([0,0.08])
 
-h(3) = subplot(3,2,3); histogram(dataset{:,34},'FaceColor','#004f80','Normalization','probability')
+h(3) = subplot(3,2,3); histogram(dataset{:,30},'FaceColor','#004f80','Normalization','probability')
 hold on
 plot(x, gauss(43.29,6.12),'LineWidth',2,'Color','#990d21')
 title('Openness')
@@ -168,7 +192,7 @@ grid
 xlim([12,60])
 ylim([0,0.08])
 
-h(4) = subplot(3,2,4); histogram(dataset{:,35},'FaceColor','#004f80','Normalization','probability')
+h(4) = subplot(3,2,4); histogram(dataset{:,31},'FaceColor','#004f80','Normalization','probability')
 hold on
 plot(x, gauss(44.41,5.42),'LineWidth',2,'Color','#990d21')
 title('Agreeableness')
@@ -176,7 +200,7 @@ grid
 xlim([12,60])
 ylim([0,0.08])
 
-h(5) = subplot(3,2,5); histogram(dataset{:,36},'FaceColor','#004f80',...
+h(5) = subplot(3,2,5); histogram(dataset{:,32},'FaceColor','#004f80',...
     'Normalization','probability','LineWidth',0.6)
 hold on
 plot(x, gauss(45.26,6.3),'LineWidth',2,'Color','#990d21')
