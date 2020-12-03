@@ -1,0 +1,32 @@
+ID
+Age
+Gender
+Education
+Country
+Ethnicity
+Neuroticism
+Extraversion
+Openness to experience
+Agreeableness
+Conscientiousness
+Impulsiveness
+Sensation seeking
+Alcohol
+Amphetamines
+Amyl nitrite
+Benzodiazepine
+Caffeine
+Cannabis
+Chocolate
+Cocaine
+Crack
+Ecstasy
+Heroin
+Ketamine
+Legal highs
+Lysergic acid diethylamide
+Methadone
+Magic mushrooms
+Nicotine
+Fictitious drug Semeron
+Volatile substance abuse
