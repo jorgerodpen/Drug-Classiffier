@@ -240,6 +240,3 @@ grid
 xlabel('Predictors')
 ylabel('Importance')
 title('Predictor Importance for the 2^{nd} model random forest')
-
-%% =====SAVING THE MODEL
-save('rfmodel2','rf')

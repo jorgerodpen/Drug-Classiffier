@@ -164,6 +164,3 @@ ax.FontSize = 18;
 grid
 xlabel('Predictors')
 ylabel('Importance')
-
-%% =====SAVING THE MODEL
-save('dtmodel2','dt')

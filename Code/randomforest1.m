@@ -237,6 +237,3 @@ ax.FontSize = 18;
 grid
 xlabel('Predictors')
 ylabel('Importance')
-
-%% =====SAVING THE MODEL
-save('rfmodel1','rf')
