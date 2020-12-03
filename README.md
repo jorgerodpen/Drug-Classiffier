@@ -2,7 +2,7 @@
 
 ## Folders
 
-###Code 
+### Code 
 
 Contains all the code used to train and evaluate our models. Some sections are commented out to skip longer parts of code (might take more than an hour for each model) but the data has been stored in separate files and loaded at the beginning of the code to avoid this. There are four models: 
 - randomforest1.m
