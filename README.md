@@ -26,6 +26,7 @@ Other files in this folder are self-made functions to perform k-fold cross valid
 An extra folder is included with the code used to clean the data (cleaned.m).
 
 
+
 ### Models
 
 Contains the four models implemented in this project. To load and test the models use the code specified bellow:
@@ -64,6 +65,7 @@ randomforest = model.rf;
 load('Xtest2.mat')
 load('Ytest2.mat')
 [y,score] = predict(randomforest, Xtest);
+
 
 
 ### PosterAndExtra
