@@ -24,7 +24,7 @@ load('decisiontree2')
 
 %% =====Reading the data
 drug = readtable('cleaned_drug_consumption.csv', ...
-    'VariableNamingRule', 'preserve');  % Full cleaned dataset
+    'PreserveVariableNames', true);  % Full cleaned dataset
 
 % ==Variables
 predictors = {'Age', 'Gender', 'Education',  'Neuroticism', ...
@@ -108,13 +108,6 @@ bestparams = paramsbo(idx,:);
 
 fprintf(['Best parameters: \nminLeafSize: %f \nnumPredictors: %f \n \n'], ...
 bestparams.minLeafSize, bestparams.numParents)
-
-%% =====Plotting bayesian optimization
-openfig('SurfDT2.fig');
-grid
-ax3 = gca;
-ax3.FontSize = 18;
-legend('Location','EastOutside')
 
 %% =====Evaluation of our model
 

@@ -24,11 +24,11 @@ load('decisiontree1')
 
 %% =====Reading the data
 drug = readtable('cleaned_drug_consumption.csv', ...
-    'VariableNamingRule', 'preserve');  % Full cleaned dataset
+    'PreserveVariableNames', true);  % Full cleaned dataset
 
 % ==Variables
-predictors = {'Age', 'Gender', 'Education',  'Neuroticism', ...
-    'Extraversion', 'Openness to experience', ...
+predictors = {'Age', 'Gender', 'Education', 'Country', 'Ethnicity',...
+    'Neuroticism', 'Extraversion', 'Openness to experience', ...
     'Agreeableness', 'Conscientiousness', 'Impulsiveness', ...
     'Sensation seeking'}; % Independent variables
 target = {'Cannabis'}; % Dependent variables
@@ -112,16 +112,16 @@ bestparams.minLeafSize, bestparams.numParents)
 %% =====Evaluation of our model
 
 %==Cross validation
-AUCcv = crossvalidationdt(Xtrain, ytrain, 10, 32, 45);
+AUCcv = crossvalidationdt(Xtrain, ytrain, 10, 14, 1);
 
 %==Bootstrap validation
-AUCb = bootstrapdt(Xtrain, ytrain, 10, 32, 45);
+AUCb = bootstrapdt(Xtrain, ytrain, 10, 14, 1);
 
 %% ===== Testing our model
 % ==Test set value
 tic
-dt = fitctree(Xtrain, ytrain, 'MinLeafSize', 32, ... % Size of each leaf  
-        'MinParentSize', 45);
+dt = fitctree(Xtrain, ytrain, 'MinLeafSize', 14, ... % Size of each leaf  
+        'MinParentSize', 1);
 traintime = toc;
 
 % ==Predicting with the model

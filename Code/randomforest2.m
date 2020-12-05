@@ -26,7 +26,7 @@ load('randomforest2')
 
 %% =====Reading the data
 drug = readtable('cleaned_drug_consumption.csv', ...
-    'VariableNamingRule', 'preserve');  % Full cleaned dataset
+    'PreserveVariableNames', true);  % Full cleaned dataset
 
 % ==Variables
 predictors = {'Age', 'Gender', 'Education',  'Neuroticism', ...
