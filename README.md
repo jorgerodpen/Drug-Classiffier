@@ -29,43 +29,11 @@ An extra folder is included with the code used to clean the data (cleaned.m).
 
 ### Models
 
-Contains the four models implemented in this project. To load and test the models use the code specified bellow:
+Contains the four models implemented in this project. To load them, use the models.m file. This file automatically reads, and uses the models in the test set, returning the AUC score obtained. You just need to change two variables:
 
-- dtmodel1.mat (Decision tree with all the variables)
-
-model = load('dtmodel1.mat');
-decisiontree = model.dt;
-load('Xtest1.mat')
-load('Ytest1.mat')
-[y,score] = predict(decisiontree, Xtest);
-
-
-- rfmodel1.mat (Random forest with all the varaibles)
-
-model = load('rfmodel1.mat');
-randomforest = model.rf;
-load('Xtest1.mat')
-load('Ytest1.mat')
-[y,score] = predict(randomforest, Xtest);
-
-
-- dtmodel2.mat (Decision tree excluding Country and Ethnicity)
-
-model = load('dtmodel2.mat');
-decisiontree = model.dt;
-load('Xtest2.mat')
-load('Ytest2.mat')
-[y,score] = predict(decisiontree, Xtest);
-
-
-- rfmodel2.mat (Random forest excluding Country and Ethnicity)
-
-model = load('rfmodel2.mat');
-randomforest = model.rf;
-load('Xtest2.mat')
-load('Ytest2.mat')
-[y,score] = predict(randomforest, Xtest);
+model_name: Type 'dt' for decision tree and 'rf' for random forest.
+model_version: Type 1 for models with all the variables and 2 for model excluding 'Country' and 'Ethnicity'
 
 ### PosterAndExtra
-s
-Contains the Poster and Suplementary Material pdf files, containing all the information related to the project. 
+
+Contains the Poster and Suplementary Material as pdf files. Both the poster and the supplementary material contain all the information needed 
