@@ -6,11 +6,11 @@ Use Matlab2020a.
 
 ### Code 
 
-Contains all the code used to train and evaluate our models. Some sections are commented out to skip longer parts of code (might take more than an hour for each model) but the data has been stored in separate files and loaded at the beginning of the code to avoid this. There are four models: 
+Contains all the code used to train and evaluate our models. Some sections are commented out to skip parts of the code that take longer to run (some sections might take more than an hour). The data generated in those sections was save as a .mat file and is loaded at the beginning of the code. There are four models: 
 - randomforest1.m
--randomforest2.m
--decisiontree1.m-
-decisiontree2.m
+- randomforest2.m
+- decisiontree1.m
+- decisiontree2.m
 
 Each one with their correspondent .mat files containing the data to run them.  
 
@@ -34,6 +34,8 @@ Contains the four models implemented in this project. To load them, use the mode
 model_name: Type 'dt' for decision tree and 'rf' for random forest.
 model_version: Type 1 for models with all the variables and 2 for model excluding 'Country' and 'Ethnicity'
 
+This file will display in the command window the AUC of the test set. 
+
 ### PosterAndExtra
 
-Contains the Poster and Suplementary Material as pdf files. Both the poster and the supplementary material contain all the information needed 
+Contains the Poster and Suplementary Material as pdf files. Both the poster and the supplementary material contain all the information needed to understand the project and see its main results. 
