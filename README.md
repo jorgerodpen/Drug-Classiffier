@@ -34,7 +34,7 @@ Contains the four models implemented in this project. To load them, use the mode
 model_name: Type 'dt' for decision tree and 'rf' for random forest.
 model_version: Type 1 for models with all the variables and 2 for model excluding 'Country' and 'Ethnicity'
 
-This file will display in the command window the AUC of the test set. 
+This file will evaluate and display on the command window the AUC of the test set with the best trained model for each combination of model_name and model_version. 
 
 ### PosterAndExtra
 
