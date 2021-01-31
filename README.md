@@ -1,4 +1,4 @@
-# Drug consumption classiffier 
+# Cannabis consumption classiffier 
 
 Use Matlab2020a. 
 
